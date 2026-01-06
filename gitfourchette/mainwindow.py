@@ -560,7 +560,7 @@ class MainWindow(QMainWindow):
         # Resolve the workdir
         if not exactMatch:
             with RepoContext(path) as repo:
-                if repo.is_bare:
+                if repo.is_bare and repo.workdir is None:
                     raise NotImplementedError(_("Sorry, {app} doesn’t support bare repositories.", app=qAppName()))
                 path = repo.workdir
 
